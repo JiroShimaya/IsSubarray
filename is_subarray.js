@@ -11,60 +11,51 @@ function isSubarray(subarray, array){
 	}
 
 function isSubarray2(subarray, array){
-	  //subarrayが空のとき常にtrue
-	  if(subarray.length == 0){
-	    return true;
-	  }
-	  let i = array.length - subarray.length + 1;
-	  let subarray_str = JSON.stringify(subarray);
-	  //arrayがsubarrayより短ければfalse
-	  if(i<=0) return false;
+  //subarrayが空のとき常にtrue
+  if(subarray.length == 0)return true;
+  //subarrayがarrayよりも長いとき、常にfalse
+  if(subarray.length > array.length)return false;
 
-	  while(i--){
-	    //if(JSON.stringify(array[i])!=JSON.stringify(subarray[0]))continue;
-		if(array[i]!=subarray[0])continue;
-	    //もしsubarray[0]と同じ文字があれば、そこからsubarray長さ分だけsliceして比較
-	    let array_str = JSON.stringify(array.slice(i,i+subarray.length));
-	    if(subarray_str == array_str) return true;
-	  }
-	  return false;
-	}
+  let subarray_str = JSON.stringify(subarray);
+  
+  for(let i=0;i<array.length - subarray.length + 1; i++){
+    if(array[i]!=subarray[0])continue;
+    //もしsubarray[0]と同じ文字があれば、そこからsubarray長さ分だけsliceして比較
+    let array_str = JSON.stringify(array.slice(i,i+subarray.length));
+    if(subarray_str == array_str) return true;    
+  }
+  return false;
+}
 
 function isSubarray3(subarray, array){
-	  //subarrayが空のとき常にtrue
-	  if(subarray.length == 0){
-	    return true;
-	  }
-	  let i = array.length - subarray.length + 1;
-	  //arrayがsubarrayより短ければfalse
-	  if(i<=0) return false;
+  //subarrayが空のとき常にtrue
+  if(subarray.length == 0)return true;
+  //subarrayがarrayよりも長いとき、常にfalse
+  if(subarray.length > array.length)return false;
 
-	  while(i--){
-	    for(let j=0;j<subarray.length;j++){
-	      if(array[i+j]!=subarray[j]) break;
-	      if(j == subarray.length-1) return true;
-	    }
-	  }
-	  return false;
-	}
+  for(let i=0;i<array.length - subarray.length + 1; i++){
+    for(let j=0;j<subarray.length;j++){
+      if(array[i+j]!=subarray[j]) break;
+      if(j == subarray.length-1) return true;
+    }
+  }
+  return false;
+}
 
 function isSubarray4(subarray, array){
-	  //subarrayが空のとき常にtrue
-	  if(subarray.length == 0){
-	    return true;
-	  }
-	  let i = array.length - subarray.length + 1;
-	  let subarray_str = JSON.stringify(subarray);
-	  //arrayがsubarrayより短ければfalse
-	  if(i<=0) return false;
+  //subarrayが空のとき常にtrue
+  if(subarray.length == 0)return true;
+  //subarrayがarrayよりも長いとき、常にfalse
+  if(subarray.length > array.length)return false;
 
-	  while(i--){
-	    //arrayのi番目からsubarray長さ分だけsliceして比較
-	    let array_str = JSON.stringify(array.slice(i,i+subarray.length));
-	    if(subarray_str == array_str) return true;
-	  }
-	  return false;
-	}
+  let subarray_str = JSON.stringify(subarray);
+  for(let i=0;i<array.length - subarray.length + 1;i++){
+    //arrayのi番目からsubarray長さ分だけsliceして比較
+    let array_str = JSON.stringify(array.slice(i,i+subarray.length));
+    if(subarray_str == array_str) return true;
+  }
+  return false;
+}
 
 function isSubarray5(subarray,array){
 	  if(isSubarray(subarray,array)){
